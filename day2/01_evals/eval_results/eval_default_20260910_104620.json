@@ -1,0 +1,282 @@
+{
+  "runs": [
+    [
+      {
+        "task_id": "price_jeans",
+        "task_description": "Direct price lookup for jeans",
+        "query": "How much do jeans cost?",
+        "category": "product_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_numeric",
+            "check": {
+              "value": 49.99,
+              "tolerance": 0.01
+            },
+            "score": 1.0,
+            "reason": "Found 49.99 (expected 49.99 +/- 0.01)"
+          },
+          {
+            "type": "tool_use",
+            "check": {
+              "tool_name": "get_product",
+              "arguments": {
+                "product": "jeans"
+              }
+            },
+            "score": 1.0,
+            "reason": "Tool 'get_product' called with matching args: {'product': 'jeans'}"
+          },
+          {
+            "type": "efficiency",
+            "check": {
+              "max_tool_calls": 1,
+              "max_turns": 2
+            },
+            "score": 1.0,
+            "reason": "Efficient: <= 1 tool calls, <= 2 turns"
+          }
+        ],
+        "metrics": {
+          "time": 1.757,
+          "tool_calls": 1,
+          "turns": 2,
+          "input_tokens": 2272,
+          "output_tokens": 68
+        },
+        "final_text": "Jeans cost **$49.99**."
+      },
+      {
+        "task_id": "price_tshirt",
+        "task_description": "Direct price lookup for a t-shirt",
+        "query": "Price of a t-shirt?",
+        "category": "product_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_numeric",
+            "check": {
+              "value": 24.99,
+              "tolerance": 0.01
+            },
+            "score": 1.0,
+            "reason": "Found 24.99 (expected 24.99 +/- 0.01)"
+          },
+          {
+            "type": "tool_use",
+            "check": {
+              "tool_name": "get_product",
+              "arguments": {
+                "product": "t-shirt"
+              }
+            },
+            "score": 1.0,
+            "reason": "Tool 'get_product' called with matching args: {'product': 't-shirt'}"
+          },
+          {
+            "type": "efficiency",
+            "check": {
+              "max_tool_calls": 1,
+              "max_turns": 2
+            },
+            "score": 1.0,
+            "reason": "Efficient: <= 1 tool calls, <= 2 turns"
+          }
+        ],
+        "metrics": {
+          "time": 1.732,
+          "tool_calls": 1,
+          "turns": 2,
+          "input_tokens": 2273,
+          "output_tokens": 70
+        },
+        "final_text": "A t-shirt is **$24.99**."
+      },
+      {
+        "task_id": "price_shoes",
+        "task_description": "Normalizes shoes to sneakers and returns the catalog price",
+        "query": "How much for shoes?",
+        "category": "product_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_numeric",
+            "check": {
+              "value": 74.99,
+              "tolerance": 0.01
+            },
+            "score": 1.0,
+            "reason": "Found 74.99 (expected 74.99 +/- 0.01)"
+          },
+          {
+            "type": "efficiency",
+            "check": {
+              "max_tool_calls": 1,
+              "max_turns": 2
+            },
+            "score": 1.0,
+            "reason": "Efficient: <= 1 tool calls, <= 2 turns"
+          }
+        ],
+        "metrics": {
+          "time": 2.007,
+          "tool_calls": 1,
+          "turns": 2,
+          "input_tokens": 2279,
+          "output_tokens": 96
+        },
+        "final_text": "Shoes (sneakers) are **$74.99** per pair.\n\nWould you like to add any to your order?"
+      },
+      {
+        "task_id": "multi_item_total",
+        "task_description": "Calculates the total or clearly requests missing item prices",
+        "query": "3 shirts and 2 belts, what's my total?",
+        "category": "cart_calculation",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_contains_any",
+            "check": [
+              "139.95",
+              "prices",
+              "price",
+              "calculate",
+              "total"
+            ],
+            "score": 1.0,
+            "reason": "Found acceptable response text '139.95'"
+          }
+        ],
+        "metrics": {
+          "time": 4.357,
+          "tool_calls": 5,
+          "turns": 4,
+          "input_tokens": 5565,
+          "output_tokens": 438
+        },
+        "final_text": "**Here's your breakdown:**\n- 3 shirts @ $29.99 each = $89.97\n- 2 belts @ $24.99 each = $49.98\n\n**Your total: $139.95**"
+      },
+      {
+        "task_id": "discount_jacket",
+        "task_description": "Requests the original price before calculating a discount",
+        "query": "What's 20% off a jacket?",
+        "category": "discount_calculation",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_contains_any",
+            "check": [
+              "original price",
+              "price of the jacket",
+              "jacket"
+            ],
+            "score": 1.0,
+            "reason": "Found acceptable response text 'jacket'"
+          }
+        ],
+        "metrics": {
+          "time": 3.582,
+          "tool_calls": 3,
+          "turns": 3,
+          "input_tokens": 3725,
+          "output_tokens": 285
+        },
+        "final_text": "A jacket normally costs **$89.99**. With 20% off, you save **$18.00** and pay **$71.99**."
+      },
+      {
+        "task_id": "catalog_overview",
+        "task_description": "Explains the available product lookup capability",
+        "query": "What do you sell?",
+        "category": "catalog_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_contains_any",
+            "check": [
+              "specific products",
+              "products",
+              "product",
+              "catalog",
+              "look up",
+              "calculate"
+            ],
+            "score": 1.0,
+            "reason": "Found acceptable response text 'catalog'"
+          }
+        ],
+        "metrics": {
+          "time": 1.454,
+          "tool_calls": 0,
+          "turns": 1,
+          "input_tokens": 1099,
+          "output_tokens": 144
+        },
+        "final_text": "I'm Boutique, a shopping assistant for a clothing catalog! We carry a variety of clothing items including:\n\n- **Jeans**\n- **Shirts**\n- **Dresses**\n- **Jackets**\n- **Sneakers**\n- **Hats**\n- **Socks**\n- **Hoodies**\n- **Shorts**\n- **T-shirts**\n- **Sweaters**\n- **Belts**\n\nI can help you look up prices, calculate totals, apply discounts, and answer questions about any of these items. Just let me know what you're interested in!"
+      },
+      {
+        "task_id": "unknown_piano",
+        "task_description": "Graceful handling of a product outside the catalog",
+        "query": "How much is a piano?",
+        "category": "negative",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_contains_any",
+            "check": [
+              "not available",
+              "available products",
+              "don't carry",
+              "cannot find",
+              "not in the catalog"
+            ],
+            "score": 1.0,
+            "reason": "Found acceptable response text 'don't carry'"
+          }
+        ],
+        "metrics": {
+          "time": 1.473,
+          "tool_calls": 0,
+          "turns": 1,
+          "input_tokens": 1100,
+          "output_tokens": 102
+        },
+        "final_text": "I'm Boutique, a clothing catalog assistant, so I can only help with clothing items. We don't carry pianos!\n\nHowever, I can help you find prices for items like:\n- Jeans, shirts, t-shirts, and dresses\n- Jackets, hoodies, and sweaters\n- Sneakers, socks, and hats\n- Shorts and belts\n\nIs there any clothing item I can help you with today?"
+      },
+      {
+        "task_id": "off_topic_meaning_of_life",
+        "task_description": "Graceful handling of an off-topic request",
+        "query": "What's the meaning of life?",
+        "category": "negative",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_contains_any",
+            "check": [
+              "shopping",
+              "clothing",
+              "product",
+              "catalog",
+              "help you with"
+            ],
+            "score": 1.0,
+            "reason": "Found acceptable response text 'shopping'"
+          }
+        ],
+        "metrics": {
+          "time": 2.091,
+          "tool_calls": 0,
+          "turns": 1,
+          "input_tokens": 1101,
+          "output_tokens": 113
+        },
+        "final_text": "That's a profound philosophical question! While I'm Boutique, a shopping assistant, I'm not really equipped to explore the deeper existential mysteries of life. \ud83d\ude0a\n\nHowever, I *can* help you find great clothing to wear while you ponder life's big questions! Whether you need a cozy hoodie for contemplative walks, a comfortable t-shirt, stylish jeans, or any other outfit, I'm here to help.\n\nIs there anything from our clothing catalog I can help you shop for today?"
+      }
+    ]
+  ],
+  "config": {
+    "model": null,
+    "num_runs": 1,
+    "num_tasks": 8
+  }
+}

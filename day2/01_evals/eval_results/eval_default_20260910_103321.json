@@ -1,0 +1,408 @@
+{
+  "runs": [
+    [
+      {
+        "task_id": "price_jeans",
+        "task_description": "Direct price lookup for jeans",
+        "query": "How much do jeans cost?",
+        "category": "product_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_numeric",
+            "check": {
+              "value": 49.99,
+              "tolerance": 0.01
+            },
+            "score": 1.0,
+            "reason": "Found 49.99 (expected 49.99 +/- 0.01)"
+          },
+          {
+            "type": "tool_use",
+            "check": {
+              "tool_name": "get_product",
+              "arguments": {
+                "product": "jeans"
+              }
+            },
+            "score": 1.0,
+            "reason": "Tool 'get_product' called with matching args: {'product': 'jeans'}"
+          }
+        ],
+        "metrics": {
+          "time": 1.817,
+          "tool_calls": 1,
+          "turns": 2,
+          "input_tokens": 1424,
+          "output_tokens": 80
+        },
+        "final_text": "Jeans cost **$49.99**.",
+        "transcript": [
+          "How much do jeans cost?",
+          {
+            "citations": null,
+            "text": "I'll look up the price of jeans for you.",
+            "type": "text"
+          },
+          {
+            "id": "toolu_01MLCFYgZgbF1pUwyXNWkYWK",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "product": "jeans"
+            },
+            "name": "get_product",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "type": "tool_result",
+            "tool_use_id": "toolu_01MLCFYgZgbF1pUwyXNWkYWK",
+            "content": "49.99"
+          },
+          {
+            "citations": null,
+            "text": "Jeans cost **$49.99**.",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "task_id": "price_tshirt",
+        "task_description": "Direct price lookup for a t-shirt",
+        "query": "Price of a t-shirt?",
+        "category": "product_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_numeric",
+            "check": {
+              "value": 24.99,
+              "tolerance": 0.01
+            },
+            "score": 1.0,
+            "reason": "Found 24.99 (expected 24.99 +/- 0.01)"
+          },
+          {
+            "type": "tool_use",
+            "check": {
+              "tool_name": "get_product",
+              "arguments": {
+                "product": "t-shirt"
+              }
+            },
+            "score": 1.0,
+            "reason": "Tool 'get_product' called with matching args: {'product': 't-shirt'}"
+          }
+        ],
+        "metrics": {
+          "time": 1.708,
+          "tool_calls": 1,
+          "turns": 2,
+          "input_tokens": 1427,
+          "output_tokens": 87
+        },
+        "final_text": "The price of a t-shirt is **$24.99**.",
+        "transcript": [
+          "Price of a t-shirt?",
+          {
+            "citations": null,
+            "text": "I'll look up the price of a t-shirt for you.",
+            "type": "text"
+          },
+          {
+            "id": "toolu_01KmMtwWEXAV15KSaGhWMH5X",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "product": "t-shirt"
+            },
+            "name": "get_product",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "type": "tool_result",
+            "tool_use_id": "toolu_01KmMtwWEXAV15KSaGhWMH5X",
+            "content": "24.99"
+          },
+          {
+            "citations": null,
+            "text": "The price of a t-shirt is **$24.99**.",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "task_id": "price_shirt",
+        "task_description": "Direct price lookup for a shirt",
+        "query": "How much does a shirt cost?",
+        "category": "product_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_numeric",
+            "check": {
+              "value": 29.99,
+              "tolerance": 0.01
+            },
+            "score": 1.0,
+            "reason": "Found 29.99 (expected 29.99 +/- 0.01)"
+          },
+          {
+            "type": "tool_use",
+            "check": {
+              "tool_name": "get_product",
+              "arguments": {
+                "product": "shirt"
+              }
+            },
+            "score": 1.0,
+            "reason": "Tool 'get_product' called with matching args: {'product': 'shirt'}"
+          }
+        ],
+        "metrics": {
+          "time": 1.689,
+          "tool_calls": 1,
+          "turns": 2,
+          "input_tokens": 1431,
+          "output_tokens": 86
+        },
+        "final_text": "A shirt costs **$29.99**.",
+        "transcript": [
+          "How much does a shirt cost?",
+          {
+            "citations": null,
+            "text": "I can help you find out how much a shirt costs. Let me look that up for you.",
+            "type": "text"
+          },
+          {
+            "id": "toolu_01YCkjVbkiUkSMCyacbS4Pn9",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "product": "shirt"
+            },
+            "name": "get_product",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "type": "tool_result",
+            "tool_use_id": "toolu_01YCkjVbkiUkSMCyacbS4Pn9",
+            "content": "29.99"
+          },
+          {
+            "citations": null,
+            "text": "A shirt costs **$29.99**.",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "task_id": "price_belt",
+        "task_description": "Direct price lookup for a belt",
+        "query": "What is the price of a belt?",
+        "category": "product_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_numeric",
+            "check": {
+              "value": 24.99,
+              "tolerance": 0.01
+            },
+            "score": 1.0,
+            "reason": "Found 24.99 (expected 24.99 +/- 0.01)"
+          },
+          {
+            "type": "tool_use",
+            "check": {
+              "tool_name": "get_product",
+              "arguments": {
+                "product": "belt"
+              }
+            },
+            "score": 1.0,
+            "reason": "Tool 'get_product' called with matching args: {'product': 'belt'}"
+          }
+        ],
+        "metrics": {
+          "time": 1.668,
+          "tool_calls": 1,
+          "turns": 2,
+          "input_tokens": 1413,
+          "output_tokens": 69
+        },
+        "final_text": "The price of a belt is **$24.99**.",
+        "transcript": [
+          "What is the price of a belt?",
+          {
+            "id": "toolu_017sszWzP3LTq5jp4GJuAaeB",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "product": "belt"
+            },
+            "name": "get_product",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "type": "tool_result",
+            "tool_use_id": "toolu_017sszWzP3LTq5jp4GJuAaeB",
+            "content": "24.99"
+          },
+          {
+            "citations": null,
+            "text": "The price of a belt is **$24.99**.",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "task_id": "price_jacket",
+        "task_description": "Direct price lookup for a jacket",
+        "query": "How much does a jacket cost?",
+        "category": "product_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_numeric",
+            "check": {
+              "value": 89.99,
+              "tolerance": 0.01
+            },
+            "score": 1.0,
+            "reason": "Found 89.99 (expected 89.99 +/- 0.01)"
+          },
+          {
+            "type": "tool_use",
+            "check": {
+              "tool_name": "get_product",
+              "arguments": {
+                "product": "jacket"
+              }
+            },
+            "score": 1.0,
+            "reason": "Tool 'get_product' called with matching args: {'product': 'jacket'}"
+          }
+        ],
+        "metrics": {
+          "time": 1.804,
+          "tool_calls": 1,
+          "turns": 2,
+          "input_tokens": 1422,
+          "output_tokens": 77
+        },
+        "final_text": "A jacket costs **$89.99**.",
+        "transcript": [
+          "How much does a jacket cost?",
+          {
+            "citations": null,
+            "text": "I can help you find the price of a jacket.",
+            "type": "text"
+          },
+          {
+            "id": "toolu_01EwaSqVrv7b8rJHzNi91wF3",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "product": "jacket"
+            },
+            "name": "get_product",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "type": "tool_result",
+            "tool_use_id": "toolu_01EwaSqVrv7b8rJHzNi91wF3",
+            "content": "89.99"
+          },
+          {
+            "citations": null,
+            "text": "A jacket costs **$89.99**.",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "task_id": "price_sneakers",
+        "task_description": "Direct price lookup for sneakers",
+        "query": "How much do sneakers cost?",
+        "category": "product_lookup",
+        "passed": true,
+        "grades": [
+          {
+            "type": "response_numeric",
+            "check": {
+              "value": 74.99,
+              "tolerance": 0.01
+            },
+            "score": 1.0,
+            "reason": "Found 74.99 (expected 74.99 +/- 0.01)"
+          },
+          {
+            "type": "tool_use",
+            "check": {
+              "tool_name": "get_product",
+              "arguments": {
+                "product": "sneakers"
+              }
+            },
+            "score": 1.0,
+            "reason": "Tool 'get_product' called with matching args: {'product': 'sneakers'}"
+          }
+        ],
+        "metrics": {
+          "time": 1.526,
+          "tool_calls": 1,
+          "turns": 2,
+          "input_tokens": 1424,
+          "output_tokens": 80
+        },
+        "final_text": "Sneakers cost **$74.99**.",
+        "transcript": [
+          "How much do sneakers cost?",
+          {
+            "citations": null,
+            "text": "I can help you find out the price of sneakers!",
+            "type": "text"
+          },
+          {
+            "id": "toolu_01RjVVwiezt8EaUVryif24cK",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "product": "sneakers"
+            },
+            "name": "get_product",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "type": "tool_result",
+            "tool_use_id": "toolu_01RjVVwiezt8EaUVryif24cK",
+            "content": "74.99"
+          },
+          {
+            "citations": null,
+            "text": "Sneakers cost **$74.99**.",
+            "type": "text"
+          }
+        ]
+      }
+    ]
+  ],
+  "config": {
+    "model": null,
+    "num_runs": 1,
+    "num_tasks": 6
+  }
+}

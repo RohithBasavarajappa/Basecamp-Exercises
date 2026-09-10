@@ -151,7 +151,7 @@
     },
     {
       "name": "spawn_specialist",
-      "description": "Spawns a specialist agent for the given category.",
+      "description": "Spawns a specialist agent for the given category and ticket. Call this once per distinct issue on a ticket — a ticket with issues in two categories should result in two separate spawn_specialist calls, one per category, before you synthesize a response.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -166,13 +166,13 @@
     },
     {
       "name": "write_response",
-      "description": "Writes the response.",
+      "description": "Writes the final customer-facing response for the ticket. resolution_status must honestly reflect the outcome across ALL issues raised in the ticket, not just the first one handled: use 'resolved' only if every issue was addressed, 'partially_resolved' if some but not all issues were resolved, 'needs_info' if you're blocked waiting on the customer, and 'escalated' if a human needs to take over.",
       "input_schema": {
         "type": "object",
         "properties": {
           "ticket_id": {"type": "string"},
           "response_body": {"type": "string"},
-          "resolution_status": {"type": "string", "enum": ["resolved", "escalated", "needs_info"]}
+          "resolution_status": {"type": "string", "enum": ["resolved", "partially_resolved", "escalated", "needs_info"]}
         },
         "required": ["ticket_id", "response_body", "resolution_status"]
       }
